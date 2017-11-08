@@ -1,12 +1,14 @@
 import argparse
 from math import log10
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-from model import Net
+
 from data_utils import get_training_set, get_test_set
+from model import Net
 
 # Train settings
 parser = argparse.ArgumentParser(description='Train Super Resolution')
@@ -67,12 +69,12 @@ def test():
 
 
 def checkpoint(epoch):
-    model_out_path = "model_epoch_{}.pth".format(epoch)
+    model_out_path = "checkpoints/model_epoch_{}.pth".format(epoch)
     torch.save(model, model_out_path)
     print("Checkpoint saved to {}".format(model_out_path))
 
 
-for e in range(1, 3):
+for e in range(1, 301):
     train(e)
     test()
     checkpoint(e)

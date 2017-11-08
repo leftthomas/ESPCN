@@ -3,7 +3,7 @@
 The implement of the method described in  ["Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network" - Shi et al.](https://arxiv.org/abs/1609.05158) for increasing spatial resolution.
 
 ```
-usage: main.py [-h] --upscale_factor UPSCALE_FACTOR 
+usage: main.py [-h] --upscale_factor UPSCALE_FACTOR
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -18,4 +18,4 @@ This super-resolution network trains on the [BSD300 dataset](https://www2.eecs.b
 `python main.py --upscale_factor 3`
 
 ### Test
-`python super_resolve.py --input_image 16077.jpg --model model_epoch_5.pth --output_filename out.png`
+`python super_resolution.py --image_name 299086.jpg --model model_epoch_500.pth`
