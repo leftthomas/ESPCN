@@ -6,6 +6,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 from data_utils import get_training_set, get_test_set
 from model import Net
@@ -15,13 +16,11 @@ parser = argparse.ArgumentParser(description='Train Super Resolution')
 parser.add_argument('--upscale_factor', type=int, required=True, help="super resolution upscale factor")
 opt = parser.parse_args()
 
-
 print('===> Loading datasets')
 train_set = get_training_set(opt.upscale_factor)
 test_set = get_test_set(opt.upscale_factor)
 training_data_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
 testing_data_loader = DataLoader(dataset=test_set, num_workers=4, batch_size=64, shuffle=False)
-
 
 print('===> Building model')
 model = Net(upscale_factor=opt.upscale_factor)
@@ -36,8 +35,10 @@ optimizer = optim.Adam(model.parameters(), lr=0.01)
 
 def train(epoch):
     epoch_loss = 0
-    for iteration, batch in enumerate(training_data_loader, 1):
-        data, target = Variable(batch[0]), Variable(batch[1])
+    index = 0
+    bar = tqdm(training_data_loader, initial=1)
+    for data, target in bar:
+        data, target = Variable(data), Variable(target)
         if torch.cuda.is_available():
             data = data.cuda()
             target = target.cuda()
@@ -47,16 +48,16 @@ def train(epoch):
         epoch_loss += loss.data[0]
         loss.backward()
         optimizer.step()
-
-        print("===> Epoch[{}]({}/{}): Loss: {:.4f}".format(epoch, iteration, len(training_data_loader), loss.data[0]))
-
+        bar.set_description(
+            "===> Epoch[{}]({}/{}): Loss: {:.4f}".format(epoch, index, len(training_data_loader), loss.data[0]))
+        index += 1
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
 
 
 def test():
     avg_psnr = 0
-    for batch in testing_data_loader:
-        data, target = Variable(batch[0]), Variable(batch[1])
+    for data, target in testing_data_loader:
+        data, target = Variable(data), Variable(target)
         if torch.cuda.is_available():
             data = data.cuda()
             target = target.cuda()
