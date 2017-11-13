@@ -50,20 +50,20 @@ def on_start_epoch(state):
 
 
 def on_end_epoch(state):
-    print('[Epoch %d] Training Loss: %.4f (PSNR: %.2f%%)' % (
-        state['epoch'], meter_loss.value()[0], meter_psnr.value()[0]))
+    print('[Epoch %d] Training Loss: %.4f (PSNR: %.2f)' % (
+        state['epoch'], meter_loss.value()[0], meter_psnr.value()))
 
     train_loss_logger.log(state['epoch'], meter_loss.value()[0])
-    train_psnr_logger.log(state['epoch'], meter_psnr.value()[0])
+    train_psnr_logger.log(state['epoch'], meter_psnr.value())
 
     reset_meters()
 
     engine.test(processor, test_loader)
     test_loss_logger.log(state['epoch'], meter_loss.value()[0])
-    test_psnr_logger.log(state['epoch'], meter_psnr.value()[0])
+    test_psnr_logger.log(state['epoch'], meter_psnr.value())
 
-    print('[Epoch %d] Testing Loss: %.4f (PSNR: %.2f%%)' % (
-        state['epoch'], meter_loss.value()[0], meter_psnr.value()[0]))
+    print('[Epoch %d] Testing Loss: %.4f (PSNR: %.2f)' % (
+        state['epoch'], meter_loss.value()[0], meter_psnr.value()))
 
     torch.save(model.state_dict(), 'epochs/epoch_%d.pt' % state['epoch'])
 

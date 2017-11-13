@@ -1,8 +1,5 @@
-import tarfile
 from os import listdir
-from os import makedirs, remove
-from os.path import exists, join, basename
-from urllib import request
+from os.path import join
 
 from PIL import Image
 from torch.utils.data.dataset import Dataset
@@ -41,30 +38,6 @@ class DatasetFromFolder(Dataset):
         return len(self.image_filenames)
 
 
-def download_bsd300(root="data"):
-    output_image_dir = join(root, "BSDS300/images")
-
-    if not exists(output_image_dir):
-        makedirs(root)
-        url = "http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/BSDS300-images.tgz"
-        print("downloading url ", url)
-
-        data = request.urlopen(url)
-
-        file_path = join(root, basename(url))
-        with open(file_path, 'wb') as f:
-            f.write(data.read())
-
-        print("Extracting data")
-        with tarfile.open(file_path) as tar:
-            for item in tar:
-                tar.extract(item, root)
-
-        remove(file_path)
-
-    return output_image_dir
-
-
 def calculate_valid_crop_size(crop_size, upscale_factor):
     return crop_size - (crop_size % upscale_factor)
 
@@ -85,7 +58,7 @@ def target_transform(crop_size):
 
 
 def get_train_set(upscale_factor):
-    root_dir = download_bsd300()
+    root_dir = 'data'
     train_dir = join(root_dir, "train")
     crop_size = calculate_valid_crop_size(256, upscale_factor)
 
@@ -95,7 +68,7 @@ def get_train_set(upscale_factor):
 
 
 def get_test_set(upscale_factor):
-    root_dir = download_bsd300()
+    root_dir = 'data'
     test_dir = join(root_dir, "test")
     crop_size = calculate_valid_crop_size(256, upscale_factor)
 

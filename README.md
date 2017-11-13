@@ -26,6 +26,8 @@ pip install tqdm
 
 | **BSD 100** | [Martin et al. ICCV 2001](https://www.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/) | [568 MB](https://uofi.box.com/shared/static/qgctsplb8txrksm9to9x01zfa4m61ngq.zip)|
 
+| **BSD 300** | [Martin et al. ICCV 2001](https://www.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/) | [568 MB](http://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/BSDS300-images.tgz)|
+
 | **Sun-Hays 80** | [Sun and Hays ICCP 2012](http://cs.brown.edu/~lbsun/SRproj2012/SR_iccp2012.html) | [311 MB](https://uofi.box.com/shared/static/rirohj4773jl7ef752r330rtqw23djt8.zip)|
 
 Download those datasets and  put them on `data/train` directory for 
