@@ -1,10 +1,11 @@
-from torch.utils.data.dataset import Dataset
-from os import listdir
-from PIL import Image
-from os.path import exists, join, basename
-from os import makedirs, remove
-from urllib import request
 import tarfile
+from os import listdir
+from os import makedirs, remove
+from os.path import exists, join, basename
+from urllib import request
+
+from PIL import Image
+from torch.utils.data.dataset import Dataset
 from torchvision.transforms import Compose, CenterCrop, ToTensor, Scale
 
 
@@ -83,7 +84,7 @@ def target_transform(crop_size):
     ])
 
 
-def get_training_set(upscale_factor):
+def get_train_set(upscale_factor):
     root_dir = download_bsd300()
     train_dir = join(root_dir, "train")
     crop_size = calculate_valid_crop_size(256, upscale_factor)

@@ -1,5 +1,4 @@
 import torch.nn as nn
-import torch.nn.init as init
 
 
 class Net(nn.Module):
@@ -13,8 +12,6 @@ class Net(nn.Module):
         self.conv4 = nn.Conv2d(32, upscale_factor ** 2, (3, 3), (1, 1), (1, 1))
         self.pixel_shuffle = nn.PixelShuffle(upscale_factor)
 
-        self._initialize_weights()
-
     def forward(self, x):
         x = self.relu(self.conv1(x))
         x = self.relu(self.conv2(x))
@@ -22,8 +19,3 @@ class Net(nn.Module):
         x = self.pixel_shuffle(self.conv4(x))
         return x
 
-    def _initialize_weights(self):
-        init.orthogonal(self.conv1.weight, init.calculate_gain('relu'))
-        init.orthogonal(self.conv2.weight, init.calculate_gain('relu'))
-        init.orthogonal(self.conv3.weight, init.calculate_gain('relu'))
-        init.orthogonal(self.conv4.weight)
