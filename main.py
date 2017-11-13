@@ -1,4 +1,3 @@
-import argparse
 from math import log10
 
 import torch
@@ -11,19 +10,17 @@ from tqdm import tqdm
 from data_utils import get_training_set, get_test_set
 from model import Net
 
-# Train settings
-parser = argparse.ArgumentParser(description='Train Super Resolution')
-parser.add_argument('--upscale_factor', type=int, required=True, help="super resolution upscale factor")
-opt = parser.parse_args()
+upscale_factor = 3
 
 print('===> Loading datasets')
-train_set = get_training_set(opt.upscale_factor)
-test_set = get_test_set(opt.upscale_factor)
+train_set = get_training_set(upscale_factor)
+test_set = get_test_set(upscale_factor)
 training_data_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=16, shuffle=True)
 testing_data_loader = DataLoader(dataset=test_set, num_workers=4, batch_size=16, shuffle=False)
 
 print('===> Building model')
-model = Net(upscale_factor=opt.upscale_factor)
+model = Net(upscale_factor=upscale_factor)
+# print(model)
 criterion = nn.MSELoss()
 
 if torch.cuda.is_available():
