@@ -75,7 +75,7 @@ def checkpoint(epoch):
     print("Checkpoint saved to {}".format(model_out_path))
 
 
-for e in range(1, 301):
+for e in range(1, 101):
     train(e)
     test()
     checkpoint(e)

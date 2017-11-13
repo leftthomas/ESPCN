@@ -18,4 +18,4 @@ This super-resolution network trains on the [BSD300 dataset](https://www2.eecs.b
 `python main.py --upscale_factor 3`
 
 ### Test
-`python super_resolution.py --image_name 299086.jpg --model model_epoch_500.pth`
+`python super_resolution.py --image_name 299086.jpg --model model_epoch_100.pth`
