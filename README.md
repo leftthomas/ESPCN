@@ -19,11 +19,15 @@ pip install tqdm
 
 ## Datasets
 
-### Train Dataset
-The train dataset are sampled from [VOC2012](http://cvlab.postech.ac.kr/~mooyeol/pascal_voc_2012/).
+### Train、Val Dataset
+The train and val datasets are sampled from [VOC2012](http://cvlab.postech.ac.kr/~mooyeol/pascal_voc_2012/).
+Train dataset has 16700 images and Val dataset has 425 images.
+Download the datasets from [here](), and then extract it into `data` directory. Finally run
+```
+python data_utils.py
+```
+to generate train and val datasets from VOC2012 with different upscale factors(2、3、4、8).
 
-Download the dataset from [here](), and then put them on `data/train` directory.
- 
 ### Test Dataset
 The test dataset are sampled from 
 
@@ -37,22 +41,22 @@ The test dataset are sampled from
 
 | **Urban 100** | [Huang et al. CVPR 2015](https://sites.google.com/site/jbhuang0604/publications/struct_sr)  | [ 1.14 GB](https://uofi.box.com/shared/static/65upg43jjd0a4cwsiqgl6o6ixube6klm.zip)|
 
-Download the dataset from [here](), and then put them on `data/test` directory.
+Download the dataset from [here](), and then extract it into `data` directory.
 
 ## Usage
 
 ### Train
 
 ```
-git clone https://github.com/leftthomas/SuperResolution.git
-cd SuperResolution
 python -m visdom.server & python train.py
 ```
 Visdom now can be accessed by going to `127.0.0.1:8097` in your browser, or your own host address if specified.
 
 ### Test
-Put the low resolution images on `images` directory, and run `python test.py`,
-the output high resolution images on `results` directory.
+```
+python test.py
+```
+The output high resolution images are on `results` directory.
 
 ## Benchmarks
 Highest accuracy was 99.57% after 30 epochs. The model may achieve a higher accuracy as shown by the trend of the loss/accuracy graphs below.

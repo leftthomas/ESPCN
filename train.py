@@ -8,7 +8,6 @@ from torchnet.engine import Engine
 from torchnet.logger import VisdomPlotLogger
 from tqdm import tqdm
 
-from data_utils import get_train_set, get_test_set
 from model import Net
 from psnrmeter import PSNRMeter
 
