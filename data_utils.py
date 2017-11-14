@@ -38,7 +38,7 @@ class DatasetFromFolder(Dataset):
         self.image_dir = dataset_dir + '/SRF_' + str(upscale_factor) + '/data'
         self.target_dir = dataset_dir + '/SRF_' + str(upscale_factor) + '/target'
         self.image_filenames = [join(self.image_dir, x) for x in listdir(self.image_dir) if is_image_file(x)]
-        self.target_filenames = [join(self.image_dir, x) for x in listdir(self.target_dir) if is_image_file(x)]
+        self.target_filenames = [join(self.target_dir, x) for x in listdir(self.target_dir) if is_image_file(x)]
         self.input_transform = input_transform
         self.target_transform = target_transform
 
