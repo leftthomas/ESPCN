@@ -1,41 +1,12 @@
 from os import listdir
-from os.path import join
 
 from PIL import Image
-from torch.utils.data.dataset import Dataset
 from torchvision.transforms import Compose, CenterCrop, ToTensor, Scale
+from tqdm import tqdm
 
 
 def is_image_file(filename):
     return any(filename.endswith(extension) for extension in [".png", ".jpg", ".jpeg"])
-
-
-def load_img(file_path):
-    img = Image.open(file_path).convert('YCbCr')
-    y, _, _ = img.split()
-    return y
-
-
-class DatasetFromFolder(Dataset):
-    def __init__(self, image_dir, input_transform=None, target_transform=None):
-        super(DatasetFromFolder, self).__init__()
-        self.image_filenames = [join(image_dir, x) for x in listdir(image_dir) if is_image_file(x)]
-
-        self.input_transform = input_transform
-        self.target_transform = target_transform
-
-    def __getitem__(self, index):
-        image = load_img(self.image_filenames[index])
-        target = image.copy()
-        if self.input_transform:
-            image = self.input_transform(image)
-        if self.target_transform:
-            target = self.target_transform(target)
-
-        return image, target
-
-    def __len__(self):
-        return len(self.image_filenames)
 
 
 def calculate_valid_crop_size(crop_size, upscale_factor):
@@ -57,21 +28,28 @@ def target_transform(crop_size):
     ])
 
 
-def get_train_set(upscale_factor):
-    root_dir = 'data'
-    train_dir = join(root_dir, "train")
+def generate_dataset(data_type, upscale_factor):
+    images_name = [x for x in listdir('data/VOC2012/' + data_type) if is_image_file(x)]
     crop_size = calculate_valid_crop_size(256, upscale_factor)
+    lr_transform = input_transform(crop_size, upscale_factor)
+    hr_transform = target_transform(crop_size)
 
-    return DatasetFromFolder(train_dir,
-                             input_transform=input_transform(crop_size, upscale_factor),
-                             target_transform=target_transform(crop_size))
+    for image_name in tqdm(images_name, desc='generate ' + data_type + ' dataset with upscale factor = '
+            + upscale_factor + ' from VOC2012'):
+        image = Image.open('data/VOC2012/' + data_type + '/' + image_name)
+        target = image.copy()
+        image = lr_transform(image)
+        target = hr_transform(target)
+        image.save('data/' + data_type + '/' + 'SRF_' + upscale_factor + '/' + 'data/' + image_name)
+        target.save('data/' + data_type + '/' + 'SRF_' + upscale_factor + '/' + 'target/' + image_name)
 
 
-def get_test_set(upscale_factor):
-    root_dir = 'data'
-    test_dir = join(root_dir, "test")
-    crop_size = calculate_valid_crop_size(256, upscale_factor)
-
-    return DatasetFromFolder(test_dir,
-                             input_transform=input_transform(crop_size, upscale_factor),
-                             target_transform=target_transform(crop_size))
+if __name__ == "__main__":
+    generate_dataset(data_type='train', upscale_factor=2)
+    generate_dataset(data_type='val', upscale_factor=2)
+    generate_dataset(data_type='train', upscale_factor=3)
+    generate_dataset(data_type='val', upscale_factor=3)
+    generate_dataset(data_type='train', upscale_factor=4)
+    generate_dataset(data_type='val', upscale_factor=4)
+    generate_dataset(data_type='train', upscale_factor=8)
+    generate_dataset(data_type='val', upscale_factor=8)

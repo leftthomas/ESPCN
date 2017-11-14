@@ -20,7 +20,7 @@ pip install tqdm
 ## Datasets
 
 ### Train Dataset
-The train dataset are sampled from [ImageNet](http://www.image-net.org).
+The train dataset are sampled from [VOC2012](http://cvlab.postech.ac.kr/~mooyeol/pascal_voc_2012/).
 
 Download the dataset from [here](), and then put them on `data/train` directory.
  
