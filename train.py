@@ -1,3 +1,5 @@
+import argparse
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -12,9 +14,6 @@ from tqdm import tqdm
 from data_utils import DatasetFromFolder
 from model import Net
 from psnrmeter import PSNRMeter
-
-UPSCALE_FACTOR = 3
-NUM_EPOCHS = 200
 
 
 def processor(sample):
@@ -66,17 +65,25 @@ def on_end_epoch(state):
     print('[Epoch %d] Val Loss: %.4f (PSNR: %.2f)' % (
         state['epoch'], meter_loss.value()[0], meter_psnr.value()))
 
-    torch.save(model.state_dict(), 'epochs/epoch_%d.pt' % state['epoch'])
+    torch.save(model.state_dict(), 'epochs/epoch_%d_%d.pt' % (UPSCALE_FACTOR, state['epoch']))
 
 
 if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description='Train Super Resolution')
+    parser.add_argument('--upscale_factor', default=3, type=int, help="super resolution upscale factor")
+    parser.add_argument('--num_epochs', default=200, type=int, help="super resolution epochs number")
+    opt = parser.parse_args()
+
+    UPSCALE_FACTOR = opt.upscale_factor
+    NUM_EPOCHS = opt.num_epochs
 
     train_set = DatasetFromFolder('data/train', upscale_factor=UPSCALE_FACTOR, input_transform=transforms.ToTensor(),
                                   target_transform=transforms.ToTensor())
     val_set = DatasetFromFolder('data/val', upscale_factor=UPSCALE_FACTOR, input_transform=transforms.ToTensor(),
                                 target_transform=transforms.ToTensor())
-    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=16, shuffle=True)
-    val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=16, shuffle=False)
+    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
+    val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=64, shuffle=False)
 
     model = Net(upscale_factor=UPSCALE_FACTOR)
     criterion = nn.MSELoss()

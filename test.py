@@ -1,3 +1,4 @@
+import argparse
 import os
 from os import listdir
 
@@ -10,10 +11,15 @@ from tqdm import tqdm
 from data_utils import is_image_file
 from model import Net
 
-UPSCALE_FACTOR = 3
-MODEL_NAME = 'epoch_200.pt'
-
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Test Super Resolution')
+    parser.add_argument('--upscale_factor', default=3, type=int, help="super resolution upscale factor")
+    parser.add_argument('--model_name', default='epoch_3_200.pt', type=int, help="super resolution model name")
+    opt = parser.parse_args()
+
+    UPSCALE_FACTOR = opt.upscale_factor
+    MODEL_NAME = opt.model_name
+
     path = 'data/test/SRF_' + str(UPSCALE_FACTOR) + '/data/'
     images_name = [x for x in listdir(path) if is_image_file(x)]
     model = Net(upscale_factor=UPSCALE_FACTOR)
