@@ -70,7 +70,7 @@ def generate_dataset(data_type, upscale_factor):
         os.makedirs(path)
 
     for image_name in tqdm(images_name, desc='generate ' + data_type + ' dataset with upscale factor = '
-            + upscale_factor + ' from VOC2012'):
+            + str(upscale_factor) + ' from VOC2012'):
         image = Image.open('data/VOC2012/' + data_type + '/' + image_name)
         target = image.copy()
         image = lr_transform(image)
