@@ -2,6 +2,7 @@ import argparse
 import os
 from os import listdir
 
+import numpy as np
 import torch
 from PIL import Image
 from torch.autograd import Variable
@@ -37,5 +38,7 @@ if __name__ == "__main__":
             image = image.cuda()
 
         out = model(image).cpu().data[0].numpy()
-        out_img = Image.fromarray(out)
+        out *= 255.0
+
+        out_img = Image.fromarray(np.uint8(out))
         out_img.save(out_path + image_name)
