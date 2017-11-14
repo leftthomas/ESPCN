@@ -1,3 +1,4 @@
+import os
 from os import listdir
 
 from PIL import Image
@@ -34,14 +35,21 @@ def generate_dataset(data_type, upscale_factor):
     lr_transform = input_transform(crop_size, upscale_factor)
     hr_transform = target_transform(crop_size)
 
+    root = 'data/' + data_type
+    if not os.path.exists(root):
+        os.makedirs(root)
+    path = root + '/SRF_' + upscale_factor
+    if not os.path.exists(path):
+        os.makedirs(path)
+
     for image_name in tqdm(images_name, desc='generate ' + data_type + ' dataset with upscale factor = '
             + upscale_factor + ' from VOC2012'):
         image = Image.open('data/VOC2012/' + data_type + '/' + image_name)
         target = image.copy()
         image = lr_transform(image)
         target = hr_transform(target)
-        image.save('data/' + data_type + '/' + 'SRF_' + upscale_factor + '/' + 'data/' + image_name)
-        target.save('data/' + data_type + '/' + 'SRF_' + upscale_factor + '/' + 'target/' + image_name)
+        image.save(path + '/' + 'data/' + image_name)
+        target.save(path + '/' + 'target/' + image_name)
 
 
 if __name__ == "__main__":
