@@ -75,8 +75,11 @@ def generate_dataset(data_type, upscale_factor):
         target = image.copy()
         image = lr_transform(image)
         target = hr_transform(target)
-        image.save(path + '/' + 'data/' + image_name)
-        target.save(path + '/' + 'target/' + image_name)
+
+        out_img = Image.fromarray(image.numpy())
+        out_target = Image.fromarray(target.numpy())
+        out_img.save(path + '/' + 'data/' + image_name)
+        out_target.save(path + '/' + 'target/' + image_name)
 
 
 if __name__ == "__main__":
