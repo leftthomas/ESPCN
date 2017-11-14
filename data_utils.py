@@ -68,6 +68,12 @@ def generate_dataset(data_type, upscale_factor):
     path = root + '/SRF_' + str(upscale_factor)
     if not os.path.exists(path):
         os.makedirs(path)
+    image_path = path + '/data'
+    if not os.path.exists(image_path):
+        os.makedirs(image_path)
+    target_path = path + '/target'
+    if not os.path.exists(target_path):
+        os.makedirs(target_path)
 
     for image_name in tqdm(images_name, desc='generate ' + data_type + ' dataset with upscale factor = '
             + str(upscale_factor) + ' from VOC2012'):
@@ -78,8 +84,8 @@ def generate_dataset(data_type, upscale_factor):
 
         out_img = ToPILImage()(image)
         out_target = ToPILImage()(target)
-        out_img.save(path + '/' + 'data/' + image_name)
-        out_target.save(path + '/' + 'target/' + image_name)
+        out_img.save(image_path + '/' + image_name)
+        out_target.save(target_path + '/' + image_name)
 
 
 if __name__ == "__main__":
