@@ -2,11 +2,10 @@ import argparse
 import os
 from os import listdir
 
-import numpy as np
 import torch
 from PIL import Image
 from torch.autograd import Variable
-from torchvision.transforms import ToTensor
+from torchvision.transforms import ToTensor, ToPILImage
 from tqdm import tqdm
 
 from data_utils import is_image_file
@@ -37,8 +36,6 @@ if __name__ == "__main__":
         if torch.cuda.is_available():
             image = image.cuda()
 
-        out = model(image).cpu().data[0].numpy()
-        out *= 255.0
-
-        out_img = Image.fromarray(np.uint8(out))
+        out = model(image).cpu().data[0]
+        out_img = ToPILImage()(out)
         out_img.save(out_path + image_name)

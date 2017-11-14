@@ -3,10 +3,9 @@ import os
 from os import listdir
 from os.path import join
 
-import numpy as np
 from PIL import Image
 from torch.utils.data.dataset import Dataset
-from torchvision.transforms import Compose, CenterCrop, ToTensor, Scale
+from torchvision.transforms import Compose, CenterCrop, ToTensor, Scale, ToPILImage
 from tqdm import tqdm
 
 
@@ -77,11 +76,8 @@ def generate_dataset(data_type, upscale_factor):
         image = lr_transform(image)
         target = hr_transform(target)
 
-        image *= 255.0
-        target *= 255.0
-
-        out_img = Image.fromarray(np.uint8(image.numpy()))
-        out_target = Image.fromarray(np.uint8(target.numpy()))
+        out_img = ToPILImage()(image)
+        out_target = ToPILImage()(target)
         out_img.save(path + '/' + 'data/' + image_name)
         out_target.save(path + '/' + 'target/' + image_name)
 
