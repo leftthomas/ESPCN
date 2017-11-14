@@ -1,3 +1,4 @@
+import argparse
 import os
 from os import listdir
 from os.path import join
@@ -79,11 +80,10 @@ def generate_dataset(data_type, upscale_factor):
 
 
 if __name__ == "__main__":
-    generate_dataset(data_type='train', upscale_factor=2)
-    generate_dataset(data_type='val', upscale_factor=2)
-    generate_dataset(data_type='train', upscale_factor=3)
-    generate_dataset(data_type='val', upscale_factor=3)
-    generate_dataset(data_type='train', upscale_factor=4)
-    generate_dataset(data_type='val', upscale_factor=4)
-    generate_dataset(data_type='train', upscale_factor=8)
-    generate_dataset(data_type='val', upscale_factor=8)
+    parser = argparse.ArgumentParser(description='Generate Super Resolution Dataset')
+    parser.add_argument('--upscale_factor', default=3, type=int, help="super resolution upscale factor")
+    opt = parser.parse_args()
+    UPSCALE_FACTOR = opt.upscale_factor
+
+    generate_dataset(data_type='train', upscale_factor=UPSCALE_FACTOR)
+    generate_dataset(data_type='val', upscale_factor=UPSCALE_FACTOR)

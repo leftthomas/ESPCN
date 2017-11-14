@@ -25,8 +25,11 @@ Train dataset has 16700 images and Val dataset has 425 images.
 Download the datasets from [here](https://pan.baidu.com/s/1c17nfeo), and then extract it into `data` directory. Finally run
 ```
 python data_utils.py
+
+optional arguments:
+--upscale_factor      super resolution upscale factor [default value is 3]
 ```
-to generate train and val datasets from VOC2012 with different upscale factors(2、3、4、8).
+to generate train and val datasets from VOC2012 with given upscale factors(options: 2、3、4、8).
 
 ### Test Dataset
 The test dataset are sampled from 
