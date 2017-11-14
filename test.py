@@ -9,12 +9,15 @@ from torchvision.transforms import ToTensor
 from tqdm import tqdm
 
 from data_utils import is_image_file
+from model import Net
 
-MODEL_NAME = 'epoch_100.pt'
 images = [join('images', x) for x in listdir('images') if is_image_file(x)]
-model = torch.load('epochs/' + MODEL_NAME)
+MODEL_NAME = 'epoch_200.pt'
+model = Net(upscale_factor=3)
 if torch.cuda.is_available():
     model = model.cuda()
+model.load_state_dict(torch.load('epochs/' + MODEL_NAME))
+
 
 for image in tqdm(images, desc='convert LR images to SR images'):
     img = Image.open(image).convert('YCbCr')
