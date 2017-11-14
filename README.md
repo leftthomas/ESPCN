@@ -22,7 +22,7 @@ pip install tqdm
 ### Train、Val Dataset
 The train and val datasets are sampled from [VOC2012](http://cvlab.postech.ac.kr/~mooyeol/pascal_voc_2012/).
 Train dataset has 16700 images and Val dataset has 425 images.
-Download the datasets from [here](), and then extract it into `data` directory. Finally run
+Download the datasets from [here](https://pan.baidu.com/s/1c17nfeo), and then extract it into `data` directory. Finally run
 ```
 python data_utils.py
 ```

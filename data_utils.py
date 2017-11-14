@@ -1,7 +1,9 @@
 import os
 from os import listdir
+from os.path import join
 
 from PIL import Image
+from torch.utils.data.dataset import Dataset
 from torchvision.transforms import Compose, CenterCrop, ToTensor, Scale
 from tqdm import tqdm
 
@@ -29,6 +31,30 @@ def target_transform(crop_size):
     ])
 
 
+class DatasetFromFolder(Dataset):
+    def __init__(self, dataset_dir, upscale_factor, input_transform=None, target_transform=None):
+        super(DatasetFromFolder, self).__init__()
+        self.image_dir = dataset_dir + '/SRF_' + str(upscale_factor) + '/data'
+        self.target_dir = dataset_dir + '/SRF_' + str(upscale_factor) + '/target'
+        self.image_filenames = [join(self.image_dir, x) for x in listdir(self.image_dir) if is_image_file(x)]
+        self.target_filenames = [join(self.image_dir, x) for x in listdir(self.target_dir) if is_image_file(x)]
+        self.input_transform = input_transform
+        self.target_transform = target_transform
+
+    def __getitem__(self, index):
+        image = Image.open(self.image_filenames[index])
+        target = Image.open(self.target_filenames[index])
+        if self.input_transform:
+            image = self.input_transform(image)
+        if self.target_transform:
+            target = self.target_transform(target)
+
+        return image, target
+
+    def __len__(self):
+        return len(self.image_filenames)
+
+
 def generate_dataset(data_type, upscale_factor):
     images_name = [x for x in listdir('data/VOC2012/' + data_type) if is_image_file(x)]
     crop_size = calculate_valid_crop_size(256, upscale_factor)
@@ -38,7 +64,7 @@ def generate_dataset(data_type, upscale_factor):
     root = 'data/' + data_type
     if not os.path.exists(root):
         os.makedirs(root)
-    path = root + '/SRF_' + upscale_factor
+    path = root + '/SRF_' + str(upscale_factor)
     if not os.path.exists(path):
         os.makedirs(path)
 
