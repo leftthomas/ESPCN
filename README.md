@@ -54,11 +54,10 @@ optional arguments:
 Visdom now can be accessed by going to `127.0.0.1:8097` in your browser, or your own host address if specified.
 
 If the above does not work, try using an SSH tunnel to your server by adding the following line to your local `~/.ssh/config` :
-
-```LocalForward 127.0.0.1:8097 127.0.0.1:8097```
+`LocalForward 127.0.0.1:8097 127.0.0.1:8097`.
 
 Maybe if you are in China, you should download the static resources from [here](https://pan.baidu.com/s/1hr80UbU), and
-put them on `~/anaconda3/lib/python3.6/site-packages/visdom/static/`
+put them on `~/anaconda3/lib/python3.6/site-packages/visdom/static/`.
 
 ### Test
 ```
