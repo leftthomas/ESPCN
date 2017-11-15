@@ -71,8 +71,8 @@ def on_end_epoch(state):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Train Super Resolution')
-    parser.add_argument('--upscale_factor', default=3, type=int, help="super resolution upscale factor")
-    parser.add_argument('--num_epochs', default=200, type=int, help="super resolution epochs number")
+    parser.add_argument('--upscale_factor', default=3, type=int, help='super resolution upscale factor')
+    parser.add_argument('--num_epochs', default=200, type=int, help='super resolution epochs number')
     opt = parser.parse_args()
 
     UPSCALE_FACTOR = opt.upscale_factor
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         model = model.cuda()
         criterion = criterion.cuda()
 
-    print("# parameters:", sum(param.numel() for param in model.parameters()))
+    print('# parameters:', sum(param.numel() for param in model.parameters()))
 
     optimizer = optim.Adam(model.parameters(), lr=0.01)
 

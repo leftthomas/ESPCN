@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 
 def is_image_file(filename):
-    return any(filename.endswith(extension) for extension in [".png", ".jpg", ".jpeg"])
+    return any(filename.endswith(extension) for extension in ['.png', '.jpg', '.jpeg'])
 
 
 def calculate_valid_crop_size(crop_size, upscale_factor):
@@ -90,7 +90,7 @@ def generate_dataset(data_type, upscale_factor):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate Super Resolution Dataset')
-    parser.add_argument('--upscale_factor', default=3, type=int, help="super resolution upscale factor")
+    parser.add_argument('--upscale_factor', default=3, type=int, help='super resolution upscale factor')
     opt = parser.parse_args()
     UPSCALE_FACTOR = opt.upscale_factor
 
