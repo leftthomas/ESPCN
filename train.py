@@ -50,7 +50,7 @@ def on_start_epoch(state):
 
 
 def on_end_epoch(state):
-    print('[Epoch %d] Train Loss: %.4f (PSNR: %.2f)' % (
+    print('[Epoch %d] Train Loss: %.4f (PSNR: %.2f db)' % (
         state['epoch'], meter_loss.value()[0], meter_psnr.value()))
 
     train_loss_logger.log(state['epoch'], meter_loss.value()[0])
@@ -62,7 +62,7 @@ def on_end_epoch(state):
     val_loss_logger.log(state['epoch'], meter_loss.value()[0])
     val_psnr_logger.log(state['epoch'], meter_psnr.value())
 
-    print('[Epoch %d] Val Loss: %.4f (PSNR: %.2f)' % (
+    print('[Epoch %d] Val Loss: %.4f (PSNR: %.2f db)' % (
         state['epoch'], meter_loss.value()[0], meter_psnr.value()))
 
     torch.save(model.state_dict(), 'epochs/epoch_%d_%d.pt' % (UPSCALE_FACTOR, state['epoch']))
@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
     print('# parameters:', sum(param.numel() for param in model.parameters()))
 
-    optimizer = optim.Adam(model.parameters(), lr=0.01)
+    optimizer = optim.Adam(model.parameters())
 
     engine = Engine()
     meter_loss = tnt.meter.AverageValueMeter()
