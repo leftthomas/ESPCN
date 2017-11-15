@@ -27,7 +27,7 @@ if __name__ == "__main__":
         model = model.cuda()
     model.load_state_dict(torch.load('epochs/' + MODEL_NAME))
 
-    out_path = 'results/SRF_' + str(UPSCALE_FACTOR)
+    out_path = 'results/SRF_' + str(UPSCALE_FACTOR) + '/'
     if not os.path.exists(out_path):
         os.makedirs(out_path)
     for image_name in tqdm(images_name, desc='convert LR images to HR images'):
