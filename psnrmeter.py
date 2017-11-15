@@ -17,8 +17,10 @@ class PSNRMeter(meter.Meter):
         if not torch.is_tensor(output) and not torch.is_tensor(target):
             output = torch.from_numpy(output)
             target = torch.from_numpy(target)
+        output = output.cpu()
+        target = target.cpu()
         self.n += output.numel()
-        self.sesum += torch.sum((output.sub(target)).pow(2))
+        self.sesum += torch.sum((output - target) ** 2)
 
     def value(self):
         mse = self.sesum / max(1, self.n)
