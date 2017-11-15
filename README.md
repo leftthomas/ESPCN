@@ -38,7 +38,7 @@ The test dataset are sampled from
 | **BSD 100** | [Martin et al. ICCV 2001](https://www.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/)
 | **Sun-Hays 80** | [Sun and Hays ICCP 2012](http://cs.brown.edu/~lbsun/SRproj2012/SR_iccp2012.html)
 | **Urban 100** | [Huang et al. CVPR 2015](https://sites.google.com/site/jbhuang0604/publications/struct_sr).
-Download the dataset from [here](https://pan.baidu.com/s/1i5291hN), and then extract it into `data` directory.
+Download the dataset from [here](https://pan.baidu.com/s/1nuGyn8l), and then extract it into `data` directory.
 
 ## Usage
 
