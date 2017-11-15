@@ -36,6 +36,6 @@ if __name__ == "__main__":
         if torch.cuda.is_available():
             image = image.cuda()
 
-        out = model(image).cpu().data[0]
+        out = model(image.unsqueeze(0)).cpu().data[0]
         out_img = ToPILImage()(out)
         out_img.save(out_path + image_name)
