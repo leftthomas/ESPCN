@@ -245,3 +245,95 @@ the right is super resolution image(output of the ESPCN).
     </td>
   </tr>
 </table>
+
+**Upscale Factor = 4**
+
+Epochs with batch size of 64 takes ~20 seconds on a NVIDIA GeForce GTX 1070 GPU. 
+
+> Loss/PSNR graphs
+
+<table>
+  <tr>
+    <td>
+     <img src="images/4_trainloss.png"/>
+    </td>
+    <td>
+     <img src="images/4_valloss.png"/>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>
+     <img src="images/4_trainpsnr.png"/>
+    </td>
+    <td>
+     <img src="images/4_valpsnr.png"/>
+    </td>
+  </tr>
+</table>
+
+> Results
+
+The left is low resolution image, the middle is high resolution image, and 
+the right is super resolution image(output of the ESPCN).
+
+- Set5
+<table>
+  <tr>
+    <td>
+     <img src="images/4_LR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/HR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/4_SR_Set5_004.png"/>
+    </td>
+  </tr>
+</table>
+
+- Set14
+<table>
+  <tr>
+    <td>
+     <img src="images/4_LR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/HR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/4_SR_Set14_001.png"/>
+    </td>
+  </tr>
+</table>
+
+- BSD100
+<table>
+  <tr>
+    <td>
+     <img src="images/4_LR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/HR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/4_SR_BSD100_063.png"/>
+    </td>
+  </tr>
+</table>
+
+- Urban100
+<table>
+  <tr>
+    <td>
+     <img src="images/4_LR_Urban100_014.png"/>
+    </td>
+    <td>
+     <img src="images/HR_Urban100_014.png"/>
+    </td>
+    <td>
+     <img src="images/4_SR_Urban100_014.png"/>
+    </td>
+  </tr>
+</table>
