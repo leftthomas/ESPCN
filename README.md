@@ -77,6 +77,98 @@ The output high resolution images are on `results` directory.
 ## Benchmarks
 Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80. 
 
+**Upscale Factor = 2**
+
+Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce GTX TITAN X GPU. 
+
+> Loss/PSNR graphs
+
+<table>
+  <tr>
+    <td>
+     <img src="images/2_trainloss.png"/>
+    </td>
+    <td>
+     <img src="images/2_valloss.png"/>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>
+     <img src="images/2_trainpsnr.png"/>
+    </td>
+    <td>
+     <img src="images/2_valpsnr.png"/>
+    </td>
+  </tr>
+</table>
+
+> Results
+
+The left is low resolution image, the middle is high resolution image, and 
+the right is super resolution image(output of the ESPCN).
+
+- Set5
+<table>
+  <tr>
+    <td>
+     <img src="images/2_LR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/HR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/2_SR_Set5_004.png"/>
+    </td>
+  </tr>
+</table>
+
+- Set14
+<table>
+  <tr>
+    <td>
+     <img src="images/2_LR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/HR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/2_SR_Set14_001.png"/>
+    </td>
+  </tr>
+</table>
+
+- BSD100
+<table>
+  <tr>
+    <td>
+     <img src="images/2_LR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/HR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/2_SR_BSD100_063.png"/>
+    </td>
+  </tr>
+</table>
+
+- Urban100
+<table>
+  <tr>
+    <td>
+     <img src="images/2_LR_Urban100_014.png"/>
+    </td>
+    <td>
+     <img src="images/HR_Urban100_014.png"/>
+    </td>
+    <td>
+     <img src="images/2_Urban100_014.png"/>
+    </td>
+  </tr>
+</table>
+
 **Upscale Factor = 3**
 
 Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
@@ -116,7 +208,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/3_LR_Set5_004.png"/>
     </td>
     <td>
-     <img src="images/3_HR_Set5_004.png"/>
+     <img src="images/HR_Set5_004.png"/>
     </td>
     <td>
      <img src="images/3_SR_Set5_004.png"/>
@@ -131,7 +223,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/3_LR_Set14_001.png"/>
     </td>
     <td>
-     <img src="images/3_HR_Set14_001.png"/>
+     <img src="images/HR_Set14_001.png"/>
     </td>
     <td>
      <img src="images/3_SR_Set14_001.png"/>
@@ -146,85 +238,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/3_LR_BSD100_063.png"/>
     </td>
     <td>
-     <img src="images/3_HR_BSD100_063.png"/>
-    </td>
-    <td>
-     <img src="images/3_SR_BSD100_063.png"/>
-    </td>
-  </tr>
-</table>
-
-
-**Upscale Factor = 4**
-
-Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce GTX TITAN X GPU. 
-
-> Loss/PSNR graphs
-
-<table>
-  <tr>
-    <td>
-     <img src="images/4_trainloss.png"/>
-    </td>
-    <td>
-     <img src="images/4_valloss.png"/>
-    </td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>
-     <img src="images/4_trainpsnr.png"/>
-    </td>
-    <td>
-     <img src="images/4_valpsnr.png"/>
-    </td>
-  </tr>
-</table>
-
-> Results
-
-The left is low resolution image, the middle is high resolution image, and 
-the right is super resolution image(output of the ESPCN).
-
-- Set5
-<table>
-  <tr>
-    <td>
-     <img src="images/3_LR_Set5_004.png"/>
-    </td>
-    <td>
-     <img src="images/3_HR_Set5_004.png"/>
-    </td>
-    <td>
-     <img src="images/3_SR_Set5_004.png"/>
-    </td>
-  </tr>
-</table>
-
-- Set14
-<table>
-  <tr>
-    <td>
-     <img src="images/3_LR_Set14_001.png"/>
-    </td>
-    <td>
-     <img src="images/3_HR_Set14_001.png"/>
-    </td>
-    <td>
-     <img src="images/3_SR_Set14_001.png"/>
-    </td>
-  </tr>
-</table>
-
-- BSD100
-<table>
-  <tr>
-    <td>
-     <img src="images/3_LR_BSD100_063.png"/>
-    </td>
-    <td>
-     <img src="images/3_HR_BSD100_063.png"/>
+     <img src="images/HR_BSD100_063.png"/>
     </td>
     <td>
      <img src="images/3_SR_BSD100_063.png"/>
