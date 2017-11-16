@@ -16,7 +16,7 @@ class Net(nn.Module):
         x = F.tanh(self.conv1(x))
         x = F.tanh(self.conv2(x))
         x = F.tanh(self.conv3(x))
-        x = self.pixel_shuffle(self.conv4(x))
+        x = F.sigmoid(self.pixel_shuffle(self.conv4(x)))
         return x
 
 
