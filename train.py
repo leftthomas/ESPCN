@@ -6,6 +6,7 @@ import torch.optim as optim
 import torchnet as tnt
 import torchvision.transforms as transforms
 from torch.autograd import Variable
+from torch.optim.lr_scheduler import MultiStepLR
 from torch.utils.data import DataLoader
 from torchnet.engine import Engine
 from torchnet.logger import VisdomPlotLogger
@@ -46,6 +47,7 @@ def on_forward(state):
 
 def on_start_epoch(state):
     reset_meters()
+    scheduler.step()
     state['iterator'] = tqdm(state['iterator'])
 
 
@@ -93,7 +95,8 @@ if __name__ == "__main__":
 
     print('# parameters:', sum(param.numel() for param in model.parameters()))
 
-    optimizer = optim.Adam(model.parameters())
+    optimizer = optim.Adam(model.parameters(), lr=1e-1)
+    scheduler = MultiStepLR(optimizer, milestones=[30, 80], gamma=0.1)
 
     engine = Engine()
     meter_loss = tnt.meter.AverageValueMeter()
