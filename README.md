@@ -108,5 +108,5 @@ The reconstructions of the digit numbers are showed at right and the ground trut
 </table>
 
 Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80. 
-Epochs with batch size of 200 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
+Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
 
