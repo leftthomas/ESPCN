@@ -164,7 +164,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/HR_Urban100_014.png"/>
     </td>
     <td>
-     <img src="images/2_Urban100_014.png"/>
+     <img src="images/2_SR_Urban100_014.png"/>
     </td>
   </tr>
 </table>
