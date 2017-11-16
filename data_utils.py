@@ -43,8 +43,8 @@ class DatasetFromFolder(Dataset):
         self.target_transform = target_transform
 
     def __getitem__(self, index):
-        image = Image.open(self.image_filenames[index]).convert('YCbCr')
-        target = Image.open(self.target_filenames[index]).convert('YCbCr')
+        image, _, _ = Image.open(self.image_filenames[index]).convert('YCbCr').split()
+        target, _, _ = Image.open(self.target_filenames[index]).convert('YCbCr').split()
         if self.input_transform:
             image = self.input_transform(image)
         if self.target_transform:
