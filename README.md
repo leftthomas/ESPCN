@@ -1,5 +1,6 @@
 # Super Resolution
-A PyTorch implementation of ESPCN based on CVPR2016 paper [Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network](https://arxiv.org/abs/1609.05158)
+A PyTorch implementation of ESPCN based on CVPR2016 paper 
+[Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network](https://arxiv.org/abs/1609.05158)
 
 ## Requirements
 - [Anaconda](https://www.anaconda.com/download/)
@@ -22,7 +23,8 @@ pip install tqdm
 ### Train、Val Dataset
 The train and val datasets are sampled from [VOC2012](http://cvlab.postech.ac.kr/~mooyeol/pascal_voc_2012/).
 Train dataset has 16700 images and Val dataset has 425 images.
-Download the datasets from [here](https://pan.baidu.com/s/1c17nfeo), and then extract it into `data` directory. Finally run
+Download the datasets from [here](https://pan.baidu.com/s/1c17nfeo), 
+and then extract it into `data` directory. Finally run
 ```
 python data_utils.py
 
@@ -51,13 +53,16 @@ optional arguments:
 --upscale_factor      super resolution upscale factor [default value is 3]
 --num_epochs          super resolution epochs number [default value is 100]
 ```
-Visdom now can be accessed by going to `127.0.0.1:8097` in your browser, or your own host address if specified.
+Visdom now can be accessed by going to `127.0.0.1:8097` in your browser, 
+or your own host address if specified.
 
-If the above does not work, try using an SSH tunnel to your server by adding the following line to your local `~/.ssh/config` :
+If the above does not work, try using an SSH tunnel to your server by 
+adding the following line to your local `~/.ssh/config` :
 `LocalForward 127.0.0.1:8097 127.0.0.1:8097`.
 
-Maybe if you are in China, you should download the static resources from [here](https://pan.baidu.com/s/1hr80UbU), and
-put them on `~/anaconda3/lib/python3.6/site-packages/visdom/static/`.
+Maybe if you are in China, you should download the static resources from 
+[here](https://pan.baidu.com/s/1hr80UbU), and put them on 
+`~/anaconda3/lib/python3.6/site-packages/visdom/static/`.
 
 ### Test
 ```
@@ -70,43 +75,159 @@ optional arguments:
 The output high resolution images are on `results` directory.
 
 ## Benchmarks
-Highest accuracy was 99.57% after 30 epochs. The model may achieve a higher accuracy as shown by the trend of the loss/accuracy graphs below.
-<table>
-  <tr>
-    <td>
-     <img src="results/train_loss.png"/>
-    </td>
-    <td>
-     <img src="results/test_loss.png"/>
-    </td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>
-     <img src="results/train_acc.png"/>
-    </td>
-    <td>
-     <img src="results/test_acc.png"/>
-    </td>
-  </tr>
-</table>
-
-The confusion matrix of the digit numbers are showed below.
-<img src="results/confusion_matrix.png"/>
-
-The reconstructions of the digit numbers are showed at right and the ground truth at left.
-<table>
-  <tr>
-    <td>
-     <img src="results/ground_truth.jpg"/>
-    </td>
-    <td>
-     <img src="results/reconstruction.jpg"/>
-    </td>
-  </tr>
-</table>
-
 Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80. 
+
+**Upscale Factor = 3**
+
 Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
 
+> Loss/PSNR graphs
+
+<table>
+  <tr>
+    <td>
+     <img src="images/3_trainloss.png"/>
+    </td>
+    <td>
+     <img src="images/3_valloss.png"/>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>
+     <img src="images/3_trainpsnr.png"/>
+    </td>
+    <td>
+     <img src="images/3_valpsnr.png"/>
+    </td>
+  </tr>
+</table>
+
+> Results
+
+The left is low resolution image, the middle is high resolution image, and 
+the right is super resolution image(output of the ESPCN).
+
+- Set5
+<table>
+  <tr>
+    <td>
+     <img src="images/3_LR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/3_HR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/3_SR_Set5_004.png"/>
+    </td>
+  </tr>
+</table>
+
+- Set14
+<table>
+  <tr>
+    <td>
+     <img src="images/3_LR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/3_HR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/3_SR_Set14_001.png"/>
+    </td>
+  </tr>
+</table>
+
+- BSD100
+<table>
+  <tr>
+    <td>
+     <img src="images/3_LR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/3_HR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/3_SR_BSD100_063.png"/>
+    </td>
+  </tr>
+</table>
+
+
+**Upscale Factor = 4**
+
+Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce GTX TITAN X GPU. 
+
+> Loss/PSNR graphs
+
+<table>
+  <tr>
+    <td>
+     <img src="images/3_trainloss.png"/>
+    </td>
+    <td>
+     <img src="images/3_valloss.png"/>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>
+     <img src="images/3_trainpsnr.png"/>
+    </td>
+    <td>
+     <img src="images/3_valpsnr.png"/>
+    </td>
+  </tr>
+</table>
+
+> Results
+
+The left is low resolution image, the middle is high resolution image, and 
+the right is super resolution image(output of the ESPCN).
+
+- Set5
+<table>
+  <tr>
+    <td>
+     <img src="images/3_LR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/3_HR_Set5_004.png"/>
+    </td>
+    <td>
+     <img src="images/3_SR_Set5_004.png"/>
+    </td>
+  </tr>
+</table>
+
+- Set14
+<table>
+  <tr>
+    <td>
+     <img src="images/3_LR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/3_HR_Set14_001.png"/>
+    </td>
+    <td>
+     <img src="images/3_SR_Set14_001.png"/>
+    </td>
+  </tr>
+</table>
+
+- BSD100
+<table>
+  <tr>
+    <td>
+     <img src="images/3_LR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/3_HR_BSD100_063.png"/>
+    </td>
+    <td>
+     <img src="images/3_SR_BSD100_063.png"/>
+    </td>
+  </tr>
+</table>
