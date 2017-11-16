@@ -49,7 +49,7 @@ python -m visdom.server & python train.py
 
 optional arguments:
 --upscale_factor      super resolution upscale factor [default value is 3]
---num_epochs          super resolution epochs number [default value is 200]
+--num_epochs          super resolution epochs number [default value is 100]
 ```
 Visdom now can be accessed by going to `127.0.0.1:8097` in your browser, or your own host address if specified.
 
@@ -65,7 +65,7 @@ python test.py
 
 optional arguments:
 --upscale_factor      super resolution upscale factor [default value is 3]
---model_name          super resolution model name [default value is epoch_3_200.pt]
+--model_name          super resolution model name [default value is epoch_3_100.pt]
 ```
 The output high resolution images are on `results` directory.
 
@@ -108,5 +108,5 @@ The reconstructions of the digit numbers are showed at right and the ground trut
 </table>
 
 Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80. 
-Epochs with batch size of 100 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
+Epochs with batch size of 200 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
 

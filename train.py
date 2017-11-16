@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Train Super Resolution')
     parser.add_argument('--upscale_factor', default=3, type=int, help='super resolution upscale factor')
-    parser.add_argument('--num_epochs', default=200, type=int, help='super resolution epochs number')
+    parser.add_argument('--num_epochs', default=100, type=int, help='super resolution epochs number')
     opt = parser.parse_args()
 
     UPSCALE_FACTOR = opt.upscale_factor
@@ -84,8 +84,8 @@ if __name__ == "__main__":
                                   target_transform=transforms.ToTensor())
     val_set = DatasetFromFolder('data/val', upscale_factor=UPSCALE_FACTOR, input_transform=transforms.ToTensor(),
                                 target_transform=transforms.ToTensor())
-    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=100, shuffle=True)
-    val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=100, shuffle=False)
+    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=200, shuffle=True)
+    val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=200, shuffle=False)
 
     model = Net(upscale_factor=UPSCALE_FACTOR)
     criterion = nn.MSELoss()
