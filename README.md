@@ -164,20 +164,20 @@ Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce GTX TITAN X GPU
 <table>
   <tr>
     <td>
-     <img src="images/3_trainloss.png"/>
+     <img src="images/4_trainloss.png"/>
     </td>
     <td>
-     <img src="images/3_valloss.png"/>
+     <img src="images/4_valloss.png"/>
     </td>
   </tr>
 </table>
 <table>
   <tr>
     <td>
-     <img src="images/3_trainpsnr.png"/>
+     <img src="images/4_trainpsnr.png"/>
     </td>
     <td>
-     <img src="images/3_valpsnr.png"/>
+     <img src="images/4_valpsnr.png"/>
     </td>
   </tr>
 </table>
