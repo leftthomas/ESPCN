@@ -1,4 +1,4 @@
-# Super Resolution using an efficient sub-pixel convolutional neural network
+# Super Resolution
 A PyTorch implementation of ESPCN based on CVPR2016 paper [Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network](https://arxiv.org/abs/1609.05158)
 
 ## Requirements
