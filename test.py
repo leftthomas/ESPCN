@@ -31,11 +31,11 @@ if __name__ == "__main__":
     if not os.path.exists(out_path):
         os.makedirs(out_path)
     for image_name in tqdm(images_name, desc='convert LR images to HR images'):
-        image = Image.open(path + image_name)
+        image = Image.open(path + image_name).convert('YCbCr')
         image = Variable(ToTensor()(image))
         if torch.cuda.is_available():
             image = image.cuda()
 
         out = model(image.unsqueeze(0)).cpu().data[0]
-        out_img = ToPILImage()(out)
+        out_img = (ToPILImage()(out)).convert('RGB')
         out_img.save(out_path + image_name)
