@@ -84,8 +84,8 @@ if __name__ == "__main__":
                                   target_transform=transforms.ToTensor())
     val_set = DatasetFromFolder('data/val', upscale_factor=UPSCALE_FACTOR, input_transform=transforms.ToTensor(),
                                 target_transform=transforms.ToTensor())
-    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=64, shuffle=True)
-    val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=64, shuffle=False)
+    train_loader = DataLoader(dataset=train_set, num_workers=4, batch_size=100, shuffle=True)
+    val_loader = DataLoader(dataset=val_set, num_workers=4, batch_size=100, shuffle=False)
 
     model = Net(upscale_factor=UPSCALE_FACTOR)
     criterion = nn.MSELoss()
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     print('# parameters:', sum(param.numel() for param in model.parameters()))
 
-    optimizer = optim.Adam(model.parameters(), lr=1e-1)
+    optimizer = optim.Adam(model.parameters(), lr=1e-2)
     scheduler = MultiStepLR(optimizer, milestones=[30, 80], gamma=0.1)
 
     engine = Engine()
