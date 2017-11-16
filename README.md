@@ -107,5 +107,6 @@ The reconstructions of the digit numbers are showed at right and the ground trut
   </tr>
 </table>
 
-Default PyTorch Adam optimizer hyperparameters were used with no learning rate scheduling. Epochs with batch size of 100 takes ~2 minutes on a NVIDIA GTX 1070 GPU. 
+Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80. 
+Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
 
