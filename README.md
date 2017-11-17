@@ -116,7 +116,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/2_LR_Set5_004.png"/>
     </td>
     <td>
-     <img src="images/HR_Set5_004.png"/>
+     <img src="images/2_HR_Set5_004.png"/>
     </td>
     <td>
      <img src="images/2_SR_Set5_004.png"/>
@@ -131,7 +131,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/2_LR_Set14_001.png"/>
     </td>
     <td>
-     <img src="images/HR_Set14_001.png"/>
+     <img src="images/2_HR_Set14_001.png"/>
     </td>
     <td>
      <img src="images/2_SR_Set14_001.png"/>
@@ -146,7 +146,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/2_LR_BSD100_063.png"/>
     </td>
     <td>
-     <img src="images/HR_BSD100_063.png"/>
+     <img src="images/2_HR_BSD100_063.png"/>
     </td>
     <td>
      <img src="images/2_SR_BSD100_063.png"/>
@@ -161,7 +161,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/2_LR_Urban100_014.png"/>
     </td>
     <td>
-     <img src="images/HR_Urban100_014.png"/>
+     <img src="images/2_HR_Urban100_014.png"/>
     </td>
     <td>
      <img src="images/2_SR_Urban100_014.png"/>
@@ -208,7 +208,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/3_LR_Set5_004.png"/>
     </td>
     <td>
-     <img src="images/HR_Set5_004.png"/>
+     <img src="images/3_HR_Set5_004.png"/>
     </td>
     <td>
      <img src="images/3_SR_Set5_004.png"/>
@@ -223,7 +223,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/3_LR_Set14_001.png"/>
     </td>
     <td>
-     <img src="images/HR_Set14_001.png"/>
+     <img src="images/3_HR_Set14_001.png"/>
     </td>
     <td>
      <img src="images/3_SR_Set14_001.png"/>
@@ -238,7 +238,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/3_LR_BSD100_063.png"/>
     </td>
     <td>
-     <img src="images/HR_BSD100_063.png"/>
+     <img src="images/3_HR_BSD100_063.png"/>
     </td>
     <td>
      <img src="images/3_SR_BSD100_063.png"/>
@@ -285,7 +285,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/4_LR_Set5_004.png"/>
     </td>
     <td>
-     <img src="images/HR_Set5_004.png"/>
+     <img src="images/4_HR_Set5_004.png"/>
     </td>
     <td>
      <img src="images/4_SR_Set5_004.png"/>
@@ -300,7 +300,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/4_LR_Set14_001.png"/>
     </td>
     <td>
-     <img src="images/HR_Set14_001.png"/>
+     <img src="images/4_HR_Set14_001.png"/>
     </td>
     <td>
      <img src="images/4_SR_Set14_001.png"/>
@@ -315,7 +315,7 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/4_LR_BSD100_063.png"/>
     </td>
     <td>
-     <img src="images/HR_BSD100_063.png"/>
+     <img src="images/4_HR_BSD100_063.png"/>
     </td>
     <td>
      <img src="images/4_SR_BSD100_063.png"/>
@@ -330,10 +330,57 @@ the right is super resolution image(output of the ESPCN).
      <img src="images/4_LR_Urban100_014.png"/>
     </td>
     <td>
-     <img src="images/HR_Urban100_014.png"/>
+     <img src="images/4_HR_Urban100_014.png"/>
     </td>
     <td>
      <img src="images/4_SR_Urban100_014.png"/>
+    </td>
+  </tr>
+</table>
+
+**Upscale Factor = 8**
+
+Epochs with batch size of 64 takes ~15 seconds on a NVIDIA GeForce GTX 1070 GPU. 
+
+> Loss/PSNR graphs
+
+<table>
+  <tr>
+    <td>
+     <img src="images/8_trainloss.png"/>
+    </td>
+    <td>
+     <img src="images/8_valloss.png"/>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>
+     <img src="images/8_trainpsnr.png"/>
+    </td>
+    <td>
+     <img src="images/8_valpsnr.png"/>
+    </td>
+  </tr>
+</table>
+
+> Results
+
+The left is low resolution image, the middle is high resolution image, and 
+the right is super resolution image(output of the ESPCN).
+
+- SunHays80
+<table>
+  <tr>
+    <td>
+     <img src="images/8_LR_SunHays80_053.png"/>
+    </td>
+    <td>
+     <img src="images/8_HR_SunHays80_053.png"/>
+    </td>
+    <td>
+     <img src="images/8_SR_SunHays80_053.png"/>
     </td>
   </tr>
 </table>
