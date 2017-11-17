@@ -75,7 +75,7 @@ optional arguments:
 The output high resolution images are on `results` directory.
 
 ## Benchmarks
-Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80. 
+Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80.
 
 **Upscale Factor = 2**
 
@@ -384,3 +384,5 @@ the right is super resolution image(output of the ESPCN).
     </td>
   </tr>
 </table>
+
+The complete test results could be download from [here](https://pan.baidu.com/s/1eS5x5HC).
