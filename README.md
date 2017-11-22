@@ -79,7 +79,7 @@ Adam optimizer were used with learning rate scheduling between epoch 30 and epoc
 
 **Upscale Factor = 2**
 
-Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce GTX TITAN X GPU. 
+Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce TITAN X GPU. 
 
 > Loss/PSNR graphs
 
@@ -171,7 +171,7 @@ the right is super resolution image(output of the ESPCN).
 
 **Upscale Factor = 3**
 
-Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce GTX TITAN X GPU. 
+Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce TITAN X GPU. 
 
 > Loss/PSNR graphs
 
