@@ -43,15 +43,7 @@ if __name__ == "__main__":
         # read frame
         success, frame = videoCapture.read()
         while success:
-            cv2.imshow('SR Video', frame)
-            cv2.waitKey(1000 / int(fps))
-            # save video
-            videoWriter.write(frame)
-            # next frame
-            success, frame = videoCapture.read()
-
-        if IS_REAL_TIME:
-            img = Image.open(path + video_name).convert('YCbCr')
+            img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)).convert('YCbCr')
             y, cb, cr = img.split()
             image = Variable(ToTensor()(y)).view(1, -1, y.size[1], y.size[0])
             if torch.cuda.is_available():
@@ -66,4 +58,12 @@ if __name__ == "__main__":
             out_img_cb = cb.resize(out_img_y.size, Image.BICUBIC)
             out_img_cr = cr.resize(out_img_y.size, Image.BICUBIC)
             out_img = Image.merge('YCbCr', [out_img_y, out_img_cb, out_img_cr]).convert('RGB')
-            out_img.save(out_path + video_name)
+
+            if IS_REAL_TIME:
+                cv2.imshow('LR Video', frame)
+                cv2.imshow('SR Video', cv2.cvtColor(np.asarray(out_img), cv2.COLOR_RGB2BGR))
+                # cv2.waitKey(1000 / int(fps))
+            # save video
+            videoWriter.write(out_img)
+            # next frame
+            success, frame = videoCapture.read()
