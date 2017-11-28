@@ -29,17 +29,19 @@ if __name__ == "__main__":
     model = Net(upscale_factor=UPSCALE_FACTOR)
     if torch.cuda.is_available():
         model = model.cuda()
+    # for cpu
+    # model.load_state_dict(torch.load('epochs/' + MODEL_NAME, map_location=lambda storage, loc: storage))
     model.load_state_dict(torch.load('epochs/' + MODEL_NAME))
 
     out_path = 'results/SRF_' + str(UPSCALE_FACTOR) + '/'
     if not os.path.exists(out_path):
         os.makedirs(out_path)
     for video_name in tqdm(videos_name, desc='convert LR videos to HR videos'):
-        videoCapture = cv2.VideoCapture(video_name)
-        fps = videoCapture.get(cv2.cv.CV_CAP_PROP_FPS)
-        size = (int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)),
-                int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)))
-        videoWriter = cv2.VideoWriter(out_path + video_name, cv2.cv.CV_FOURCC('M', 'J', 'P', 'G'), fps, size)
+        videoCapture = cv2.VideoCapture(path + video_name)
+        fps = videoCapture.get(cv2.CAP_PROP_FPS)
+        size = (int(videoCapture.get(cv2.CAP_PROP_FRAME_WIDTH) * UPSCALE_FACTOR),
+                int(videoCapture.get(cv2.CAP_PROP_FRAME_HEIGHT)) * UPSCALE_FACTOR)
+        videoWriter = cv2.VideoWriter(out_path + video_name, cv2.VideoWriter_fourcc(*'XVID'), fps, size)
         # read frame
         success, frame = videoCapture.read()
         while success:
@@ -58,10 +60,11 @@ if __name__ == "__main__":
             out_img_cb = cb.resize(out_img_y.size, Image.BICUBIC)
             out_img_cr = cr.resize(out_img_y.size, Image.BICUBIC)
             out_img = Image.merge('YCbCr', [out_img_y, out_img_cb, out_img_cr]).convert('RGB')
+            out_img = cv2.cvtColor(np.asarray(out_img), cv2.COLOR_RGB2BGR)
 
             if IS_REAL_TIME:
                 cv2.imshow('LR Video', frame)
-                cv2.imshow('SR Video', cv2.cvtColor(np.asarray(out_img), cv2.COLOR_RGB2BGR))
+                cv2.imshow('SR Video', out_img)
                 # cv2.waitKey(1000 / int(fps))
             # save video
             videoWriter.write(out_img)
