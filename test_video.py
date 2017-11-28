@@ -66,7 +66,7 @@ if __name__ == "__main__":
             if IS_REAL_TIME:
                 cv2.imshow('LR Video', frame)
                 cv2.imshow('SR Video', out_img)
-                cv2.waitKey(1000 / int(fps))
+                cv2.waitKey(int(1000 / fps))
             # save video
             videoWriter.write(out_img)
             # next frame
