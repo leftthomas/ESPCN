@@ -64,15 +64,26 @@ Maybe if you are in China, you should download the static resources from
 [here](https://pan.baidu.com/s/1hr80UbU), and put them on 
 `~/anaconda3/lib/python3.6/site-packages/visdom/static/`.
 
-### Test
+### Test Image
 ```
-python test.py
+python test_image.py
 
 optional arguments:
 --upscale_factor      super resolution upscale factor [default value is 3]
 --model_name          super resolution model name [default value is epoch_3_100.pt]
 ```
 The output high resolution images are on `results` directory.
+
+### Test Video
+```
+python test_video.py
+
+optional arguments:
+--upscale_factor      super resolution upscale factor [default value is 3]
+--is_real_time        super resolution real time to show [default value is False]
+--model_name          super resolution model name [default value is epoch_3_100.pt]
+```
+The output high resolution videos are on `results` directory.
 
 ## Benchmarks
 Adam optimizer were used with learning rate scheduling between epoch 30 and epoch 80.
