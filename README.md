@@ -385,4 +385,4 @@ the right is super resolution image(output of the ESPCN).
   </tr>
 </table>
 
-The complete test results could be download from [here](https://pan.baidu.com/s/1eS5x5HC).
+The complete test results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC).
