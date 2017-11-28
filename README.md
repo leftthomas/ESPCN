@@ -17,6 +17,10 @@ pip install git+https://github.com/pytorch/tnt.git@master
 ```
 pip install tqdm
 ```
+- opencv
+```
+conda install -c conda-forge opencv
+```
 
 ## Datasets
 

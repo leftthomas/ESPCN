@@ -10,11 +10,11 @@ from tqdm import tqdm
 
 
 def is_image_file(filename):
-    return any(filename.endswith(extension) for extension in ['.png', '.jpg', '.jpeg'])
+    return any(filename.endswith(extension) for extension in ['.png', '.jpg', '.jpeg', '.JPG', '.JPEG', '.PNG'])
 
 
 def is_video_file(filename):
-    return any(filename.endswith(extension) for extension in ['.mp4', '.avi'])
+    return any(filename.endswith(extension) for extension in ['.mp4', '.avi', '.mpg', '.mkv', '.wmv', '.flv'])
 
 
 def calculate_valid_crop_size(crop_size, upscale_factor):

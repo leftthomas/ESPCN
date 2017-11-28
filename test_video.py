@@ -2,6 +2,7 @@ import argparse
 import os
 from os import listdir
 
+import cv2
 import numpy as np
 import torch
 from PIL import Image
@@ -23,7 +24,7 @@ if __name__ == "__main__":
     IS_REAL_TIME = opt.is_real_time
     MODEL_NAME = opt.model_name
 
-    path = 'data/test/SRF_' + str(UPSCALE_FACTOR) + '/data/'
+    path = 'data/test/SRF_' + str(UPSCALE_FACTOR) + '/video/'
     videos_name = [x for x in listdir(path) if is_video_file(x)]
     model = Net(upscale_factor=UPSCALE_FACTOR)
     if torch.cuda.is_available():
@@ -34,6 +35,21 @@ if __name__ == "__main__":
     if not os.path.exists(out_path):
         os.makedirs(out_path)
     for video_name in tqdm(videos_name, desc='convert LR videos to HR videos'):
+        videoCapture = cv2.VideoCapture(video_name)
+        fps = videoCapture.get(cv2.cv.CV_CAP_PROP_FPS)
+        size = (int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)),
+                int(videoCapture.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)))
+        videoWriter = cv2.VideoWriter(out_path + video_name, cv2.cv.CV_FOURCC('M', 'J', 'P', 'G'), fps, size)
+        # read frame
+        success, frame = videoCapture.read()
+        while success:
+            cv2.imshow('SR Video', frame)
+            cv2.waitKey(1000 / int(fps))
+            # save video
+            videoWriter.write(frame)
+            # next frame
+            success, frame = videoCapture.read()
+
         if IS_REAL_TIME:
             img = Image.open(path + video_name).convert('YCbCr')
             y, cb, cr = img.split()
@@ -51,5 +67,3 @@ if __name__ == "__main__":
             out_img_cr = cr.resize(out_img_y.size, Image.BICUBIC)
             out_img = Image.merge('YCbCr', [out_img_y, out_img_cb, out_img_cr]).convert('RGB')
             out_img.save(out_path + video_name)
-        else:
-            pass
