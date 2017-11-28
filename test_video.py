@@ -41,7 +41,8 @@ if __name__ == "__main__":
         fps = videoCapture.get(cv2.CAP_PROP_FPS)
         size = (int(videoCapture.get(cv2.CAP_PROP_FRAME_WIDTH) * UPSCALE_FACTOR),
                 int(videoCapture.get(cv2.CAP_PROP_FRAME_HEIGHT)) * UPSCALE_FACTOR)
-        videoWriter = cv2.VideoWriter(out_path + video_name, cv2.VideoWriter_fourcc(*'XVID'), fps, size)
+        output_name = out_path + video_name.split('.')[0] + '.avi'
+        videoWriter = cv2.VideoWriter(output_name, cv2.VideoWriter_fourcc(*'MPEG'), fps, size)
         # read frame
         success, frame = videoCapture.read()
         while success:
@@ -65,7 +66,7 @@ if __name__ == "__main__":
             if IS_REAL_TIME:
                 cv2.imshow('LR Video', frame)
                 cv2.imshow('SR Video', out_img)
-                # cv2.waitKey(1000 / int(fps))
+                cv2.waitKey(1000 / int(fps))
             # save video
             videoWriter.write(out_img)
             # next frame
