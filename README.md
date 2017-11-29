@@ -37,14 +37,19 @@ optional arguments:
 ```
 to generate train and val datasets from VOC2012 with given upscale factors(options: 2、3、4、8).
 
-### Test Dataset
-The test dataset are sampled from 
+### Test Image Dataset
+The test image dataset are sampled from 
 | **Set 5** |  [Bevilacqua et al. BMVC 2012](http://people.rennes.inria.fr/Aline.Roumy/results/SR_BMVC12.html)
 | **Set 14** |  [Zeyde et al. LNCS 2010](https://sites.google.com/site/romanzeyde/research-interests)
 | **BSD 100** | [Martin et al. ICCV 2001](https://www.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/)
 | **Sun-Hays 80** | [Sun and Hays ICCP 2012](http://cs.brown.edu/~lbsun/SRproj2012/SR_iccp2012.html)
 | **Urban 100** | [Huang et al. CVPR 2015](https://sites.google.com/site/jbhuang0604/publications/struct_sr).
-Download the dataset from [here](https://pan.baidu.com/s/1nuGyn8l), and then extract it into `data` directory.
+Download the image dataset from [here](https://pan.baidu.com/s/1nuGyn8l), and then extract it into `data` directory.
+
+### Test Video Dataset
+The test dataset are sampled from Jay Chou's Music Videos. Download the video dataset from 
+[here](https://pan.baidu.com/s/1hr81GfM), and then extract it into `data/test/SRF_xx/video` 
+directory, which `xx` means the upscale factor.
 
 ## Usage
 
@@ -120,7 +125,7 @@ Epochs with batch size of 64 takes ~1 minute on a NVIDIA GeForce TITAN X GPU.
   </tr>
 </table>
 
-> Results
+> Image Results
 
 The left is low resolution image, the middle is high resolution image, and 
 the right is super resolution image(output of the ESPCN).
@@ -185,6 +190,26 @@ the right is super resolution image(output of the ESPCN).
   </tr>
 </table>
 
+> Video Results
+
+The left is low resolution video, the right is super resolution video(output of the ESPCN).
+<table>
+  <tr>
+    <td>
+     <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+   <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+</video>
+    </td>
+    <td>
+     <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+   <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+</video>
+    </td>
+  </tr>
+</table>
+<table>
+
+
 **Upscale Factor = 3**
 
 Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce TITAN X GPU. 
@@ -212,7 +237,7 @@ Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce TITAN X GPU.
   </tr>
 </table>
 
-> Results
+> Image Results
 
 The left is low resolution image, the middle is high resolution image, and 
 the right is super resolution image(output of the ESPCN).
@@ -289,7 +314,7 @@ Epochs with batch size of 64 takes ~20 seconds on a NVIDIA GeForce GTX 1070 GPU.
   </tr>
 </table>
 
-> Results
+> Image Results
 
 The left is low resolution image, the middle is high resolution image, and 
 the right is super resolution image(output of the ESPCN).
@@ -381,7 +406,7 @@ Epochs with batch size of 64 takes ~15 seconds on a NVIDIA GeForce GTX 1070 GPU.
   </tr>
 </table>
 
-> Results
+> Image Results
 
 The left is low resolution image, the middle is high resolution image, and 
 the right is super resolution image(output of the ESPCN).
@@ -401,4 +426,5 @@ the right is super resolution image(output of the ESPCN).
   </tr>
 </table>
 
-The complete test results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC).
+The complete test image results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC), and 
+the complete test video results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC).
