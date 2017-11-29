@@ -197,13 +197,13 @@ The left is low resolution video, the right is super resolution video(output of 
   <tr>
     <td>
      <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-   <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-</video>
+        <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+     </video>
     </td>
     <td>
      <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-   <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-</video>
+        <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+     </video>
     </td>
   </tr>
 </table>
