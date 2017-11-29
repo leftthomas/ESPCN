@@ -196,7 +196,6 @@ The left is low resolution video, the right is super resolution video(output of 
 
 [![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
 
-
 **Upscale Factor = 3**
 
 Epochs with batch size of 64 takes ~30 seconds on a NVIDIA GeForce TITAN X GPU. 
@@ -273,6 +272,12 @@ the right is super resolution image(output of the ESPCN).
     </td>
   </tr>
 </table>
+
+> Video Results
+
+The left is low resolution video, the right is super resolution video(output of the ESPCN).
+
+[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
 
 **Upscale Factor = 4**
 
@@ -366,6 +371,12 @@ the right is super resolution image(output of the ESPCN).
   </tr>
 </table>
 
+> Video Results
+
+The left is low resolution video, the right is super resolution video(output of the ESPCN).
+
+[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
+
 **Upscale Factor = 8**
 
 Epochs with batch size of 64 takes ~15 seconds on a NVIDIA GeForce GTX 1070 GPU. 
@@ -412,6 +423,12 @@ the right is super resolution image(output of the ESPCN).
     </td>
   </tr>
 </table>
+
+> Video Results
+
+The left is low resolution video, the right is super resolution video(output of the ESPCN).
+
+[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
 
 The complete test image results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC), and 
 the complete test video results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC).
