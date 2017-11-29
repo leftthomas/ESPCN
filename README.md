@@ -85,6 +85,7 @@ python test_video.py
 optional arguments:
 --upscale_factor      super resolution upscale factor [default value is 3]
 --is_real_time        super resolution real time to show [default value is False]
+--delay_time          super resolution delay time to show [default value is 1]
 --model_name          super resolution model name [default value is epoch_3_100.pt]
 ```
 The output high resolution videos are on `results` directory.

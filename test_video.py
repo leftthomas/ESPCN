@@ -17,11 +17,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Test Super Resolution')
     parser.add_argument('--upscale_factor', default=3, type=int, help='super resolution upscale factor')
     parser.add_argument('--is_real_time', default=False, type=bool, help='super resolution real time to show')
+    parser.add_argument('--delay_time', default=1, type=int, help='super resolution delay time to show')
     parser.add_argument('--model_name', default='epoch_3_100.pt', type=str, help='super resolution model name')
     opt = parser.parse_args()
 
     UPSCALE_FACTOR = opt.upscale_factor
     IS_REAL_TIME = opt.is_real_time
+    DELAY_TIME = opt.delay_time
     MODEL_NAME = opt.model_name
 
     path = 'data/test/SRF_' + str(UPSCALE_FACTOR) + '/video/'
@@ -65,9 +67,9 @@ if __name__ == "__main__":
             out_img = cv2.cvtColor(np.asarray(out_img), cv2.COLOR_RGB2BGR)
 
             if IS_REAL_TIME:
-                cv2.imshow('LR Video', frame)
-                cv2.imshow('SR Video', out_img)
-                cv2.waitKey(1)
+                cv2.imshow('LR Video ' + video_name.split('.')[0], frame)
+                cv2.imshow('SR Video ' + video_name.split('.')[0], out_img)
+                cv2.waitKey(DELAY_TIME)
             else:
                 # save video
                 videoWriter.write(out_img)
