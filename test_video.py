@@ -67,8 +67,8 @@ if __name__ == "__main__":
             out_img = cv2.cvtColor(np.asarray(out_img), cv2.COLOR_RGB2BGR)
 
             if IS_REAL_TIME:
-                cv2.imshow('LR Video ' + video_name.split('.')[0], frame)
-                cv2.imshow('SR Video ' + video_name.split('.')[0], out_img)
+                cv2.imshow('LR Video ', frame)
+                cv2.imshow('SR Video ', out_img)
                 cv2.waitKey(DELAY_TIME)
             else:
                 # save video
