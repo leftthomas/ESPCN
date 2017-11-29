@@ -193,21 +193,10 @@ the right is super resolution image(output of the ESPCN).
 > Video Results
 
 The left is low resolution video, the right is super resolution video(output of the ESPCN).
-<table>
-  <tr>
-    <td>
-     <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-        <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-     </video>
-    </td>
-    <td>
-     <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-        <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-     </video>
-    </td>
-  </tr>
-</table>
-<table>
+
+<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+   <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+</video>
 
 
 **Upscale Factor = 3**
