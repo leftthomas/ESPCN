@@ -431,4 +431,4 @@ The left is low resolution video, the right is super resolution video(output of 
 [![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://youtu.be/vt5fpE0bzSY)
 
 The complete test image results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC), and 
-the complete test video results could be downloaded from [here](https://pan.baidu.com/s/1eS5x5HC).
+the complete test video results could be downloaded from [here](https://pan.baidu.com/s/1bZIvKU).
