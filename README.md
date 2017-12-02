@@ -193,6 +193,7 @@ the right is super resolution image(output of the ESPCN).
 > Video Results
 
 The right is low resolution video, the left is super resolution video(output of the ESPCN).
+Click the image to watch the complete video.
 
 [![Watch the video](images/video_SRF_2.png)](http://v.youku.com/v_show/id_XMzIwMDEyODU2MA==.html?spm=a2hzp.8244740.0.0)
 
@@ -275,7 +276,8 @@ the right is super resolution image(output of the ESPCN).
 
 > Video Results
 
-The right is low resolution video, the left is super resolution video(output of the ESPCN).
+The right is low resolution video, the left is super resolution video(output of the ESPCN). 
+Click the image to watch the complete video.
 
 [![Watch the video](images/video_SRF_3.png)](http://v.youku.com/v_show/id_XMzIwMDEzMjEyNA==.html?spm=a2hzp.8244740.0.0)
 
@@ -374,6 +376,7 @@ the right is super resolution image(output of the ESPCN).
 > Video Results
 
 The right is low resolution video, the left is super resolution video(output of the ESPCN).
+Click the image to watch the complete video.
 
 [![Watch the video](images/video_SRF_4.png)](http://v.youku.com/v_show/id_XMzIwMDEzNDcxMg==.html?spm=a2hzp.8244740.0.0)
 
@@ -427,6 +430,7 @@ the right is super resolution image(output of the ESPCN).
 > Video Results
 
 The left is low resolution video, the right is super resolution video(output of the ESPCN).
+Click the image to watch the complete video.
 
 [![Watch the video](images/video_SRF_8.png)](http://v.youku.com/v_show/id_XMzIwMDEzODMzNg==.html?spm=a2hzp.8244740.0.0)
 
